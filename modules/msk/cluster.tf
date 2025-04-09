@@ -4,9 +4,9 @@ resource "aws_msk_cluster" "kafka" {
   number_of_broker_nodes = var.kafka_number_of_broker_nodes
 
   broker_node_group_info {
-    instance_type   = var.kafka_instance_type
-    client_subnets  = var.kafka_client_subnets
-    security_groups = aws_security_group.cdip_msk_sg.id
+    instance_type  = var.kafka_instance_type
+    client_subnets = var.kafka_client_subnets
+    security_groups = [aws_security_group.cdip_msk_sg.id]
     #     security_groups = var.kafka_security_groups
 
     storage_info {
