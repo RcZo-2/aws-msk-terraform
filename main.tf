@@ -9,19 +9,19 @@ terraform {
 # msk
 module "cluster" {
 #   aws_profile = var.aws_profile
-  aws_region  = var.aws_region
+  aws_region  = "ap-southeast-1"
 
   kafka_cluster_name           = "msk-97639"
   kafka_version                = "3.6.0"
   kafka_number_of_broker_nodes = 2
   kafka_instance_type          = "kafka.m7g.large"
-  kafka_ebs_volume_size        = 600
-  kafka_scaling_max_capacity   = 500
+  kafka_ebs_volume_size        = 100
+  kafka_scaling_max_capacity   = 200
   kafka_client_subnets = [
-    subnet-00000000000000000,
-    subnet-00000000000000001,
+    "subnet-00000000000000000",
+    "subnet-00000000000000001",
   ]
-  kafka_security_groups = ["sg-0d7ae01cd3dc3a16d"]
+  kafka_security_groups = ["sg-00000000000000000"]
 
   server_properties = <<PROPERTIES
 auto.create.topics.enable=false
