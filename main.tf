@@ -40,17 +40,9 @@ zookeeper.session.timeout.ms=18000
 PROPERTIES
 
   msk_users = [
-    {
-      username = "msk-user"
-      password = random_password.password.result
-    }
+    "msk-user-01",
+    "msk-user-02"
   ]
 
   source = "./modules/msk"
-}
-
-resource "random_password" "password" {
-  length           = 8
-  special          = true
-  override_special = "!*#$%&^@"
 }

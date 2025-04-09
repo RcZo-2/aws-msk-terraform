@@ -8,7 +8,7 @@ variable "aws_profile" {
 }
 
 variable "msk_users" {
-  type = list(any)
+  type = list(string)
 }
 
 variable "server_properties" {

@@ -65,5 +65,4 @@ resource "aws_msk_cluster" "kafka" {
     aws_security_group.cdip_msk_sg,
     aws_cloudwatch_log_group.msk_log_group
   ]
-
 }
