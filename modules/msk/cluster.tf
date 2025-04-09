@@ -62,7 +62,8 @@ resource "aws_msk_cluster" "kafka" {
   depends_on = [
     aws_msk_configuration.kafka_config_general,
     aws_kms_key.msk_encryption_key,
-    aws_security_group.cdip_msk_sg
+    aws_security_group.cdip_msk_sg,
+    aws_cloudwatch_log_group.msk_log_group
   ]
 
 }

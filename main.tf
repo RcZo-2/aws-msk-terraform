@@ -42,9 +42,15 @@ PROPERTIES
   msk_users = [
     {
       username = "msk-user"
-      password = "kDzq86Y03QZ0"
+      password = random_password.password.result
     }
   ]
 
   source = "./modules/msk"
+}
+
+resource "random_password" "password" {
+  length           = 8
+  special          = true
+  override_special = "!#$%&*()-_=+[]{}<>:?"
 }

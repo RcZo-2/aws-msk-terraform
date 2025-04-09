@@ -3,7 +3,7 @@ resource "aws_kms_key" "msk_encryption_key" {
   enable_key_rotation = false
 }
 
-resource "aws_kms_alias" "example_alias" {
+resource "aws_kms_alias" "cdip_msk_key_alias" {
   name          = "alias/cdip-msk-encryption-key"
   target_key_id = aws_kms_key.msk_encryption_key.id
 }
