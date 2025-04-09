@@ -37,9 +37,9 @@ variable "kafka_client_subnets" {
   type = list(any)
 }
 
-variable "kafka_security_groups" {
-  type = list(any)
-}
+# variable "kafka_security_groups" {
+#   type = list(any)
+# }
 
 variable "kafka_scaling_max_capacity" {
   type = number
@@ -47,5 +47,5 @@ variable "kafka_scaling_max_capacity" {
 
 variable "kafka_log_group_name" {
   type    = string
-  default = "/msk-97639"
+  default = "/cdip-msk"
 }

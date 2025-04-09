@@ -8,8 +8,8 @@ terraform {
 
 # msk
 module "cluster" {
-#   aws_profile = var.aws_profile
-  aws_region  = "ap-southeast-1"
+  #   aws_profile = var.aws_profile
+  aws_region = "ap-southeast-1"
 
   kafka_cluster_name           = "msk-97639"
   kafka_version                = "3.6.0"
@@ -21,7 +21,7 @@ module "cluster" {
     "subnet-00000000000000000",
     "subnet-00000000000000001",
   ]
-  kafka_security_groups = ["sg-00000000000000000"]
+  #kafka_security_groups = ["sg-00000000000000000"]
 
   server_properties = <<PROPERTIES
 auto.create.topics.enable=false

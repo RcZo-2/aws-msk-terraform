@@ -6,7 +6,8 @@ resource "aws_msk_cluster" "kafka" {
   broker_node_group_info {
     instance_type   = var.kafka_instance_type
     client_subnets  = var.kafka_client_subnets
-    security_groups = var.kafka_security_groups
+    security_groups = aws_security_group.cdip_msk_sg.id
+    #     security_groups = var.kafka_security_groups
 
     storage_info {
       ebs_storage_info {
@@ -45,7 +46,7 @@ resource "aws_msk_cluster" "kafka" {
     broker_logs {
       cloudwatch_logs {
         enabled   = true
-        log_group = var.kafka_log_group_name
+        log_group = aws_cloudwatch_log_group.msk_log_group.name
       }
     }
   }
@@ -60,7 +61,8 @@ resource "aws_msk_cluster" "kafka" {
 
   depends_on = [
     aws_msk_configuration.kafka_config_general,
-    aws_kms_key.msk_encryption_key
+    aws_kms_key.msk_encryption_key,
+    aws_security_group.cdip_msk_sg
   ]
 
 }
