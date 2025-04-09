@@ -1,14 +1,14 @@
 terraform {
   required_providers {
     aws = {
-      version = "5.15.0"
+      version = "5.94.1"
     }
   }
 }
 
 # msk
 module "cluster" {
-  aws_profile = var.aws_profile
+#   aws_profile = var.aws_profile
   aws_region  = var.aws_region
 
   kafka_cluster_name           = "msk-97639"
