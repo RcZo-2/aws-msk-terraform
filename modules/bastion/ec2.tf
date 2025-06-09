@@ -1,7 +1,7 @@
 resource "aws_instance" "your-bastion-server-name" {
   ami                  = "ami-05ab12222a9f39021"
   instance_type        = "t2.micro"
-  subnet_id            = data.aws_subnets.selected.ids[0]
+  subnet_id            = var.subnet_id
   iam_instance_profile = "maybe-xxxx-runner"
 
   tags = {
