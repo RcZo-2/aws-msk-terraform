@@ -47,5 +47,10 @@ variable "kafka_scaling_max_capacity" {
 
 variable "kafka_log_group_name" {
   type    = string
-  default = "/cdip-msk"
+  default = "/your-msk-log-group-name"
+}
+
+variable "vpc_id" {
+  description = "The VPC ID where resources will be created."
+  type        = string
 }

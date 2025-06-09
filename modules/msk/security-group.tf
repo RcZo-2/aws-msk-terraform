@@ -1,7 +1,7 @@
-resource "aws_security_group" "cdip_msk_sg" {
-  name        = "cdip-msk-sg"
+resource "aws_security_group" "msk_sg" {
+  name        = "your-security-group-name"
   description = "msk security group"
-  vpc_id      = "vpc-xxxxxxxx"  # Provide the VPC ID where you want to create the security group
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port = 9096

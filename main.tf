@@ -28,9 +28,10 @@ data "aws_subnets" "selected" {
 module "cluster" {
   #   aws_profile = var.aws_profile
   aws_region = "ap-southeast-1"
+  vpc_id = data.aws_vpc.selected.id
 
   kafka_cluster_name           = "your-msk-name"
-  kafka_version                = var.kafka_version
+  kafka_version                = "3.6.0"
   kafka_number_of_broker_nodes = 3
   kafka_instance_type          = "kafka.m7g.large"
   kafka_ebs_volume_size        = 100
@@ -61,9 +62,14 @@ PROPERTIES
     "msk-user-02"
   ]
 
+ 
   source = "./modules/msk"
 }
 
 module "bastion" {
-  source = "./modules/bastion"
+  bastion_server_name = "your-ec2-name"
+  subnet_id           = data.aws_subnets.selected.ids[0]
+  kafka_version       = "3.6.0"
+
+  source        = "./modules/bastion"
 }

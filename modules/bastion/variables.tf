@@ -1,6 +1,12 @@
-  variable "subnet_id" {
+variable "subnet_id" {
     type = string
-  }
-  variable "kafka_version" {
+}
+
+variable "bastion_server_name" {
     type = string
-  }
+}
+
+variable "kafka_version" {
+  type = string
+}
+
