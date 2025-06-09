@@ -6,6 +6,17 @@ terraform {
   }
 }
 
+data "aws_vpc" "selected" {
+  filter {
+    name   = "tag:Name"
+    values = ["cdip-ipe-lab-vpc"]
+  }
+}
+
+data "aws_subnet_ids" "selected" {
+  vpc_id = data.aws_vpc.selected.id
+}
+
 # msk
 module "cluster" {
   #   aws_profile = var.aws_profile
@@ -17,10 +28,7 @@ module "cluster" {
   kafka_instance_type          = "kafka.m7g.large"
   kafka_ebs_volume_size        = 100
   kafka_scaling_max_capacity   = 200
-  kafka_client_subnets = [
-    "subnet-00000000000000000",
-    "subnet-00000000000000001",
-  ]
+  kafka_client_subnets = data.aws_subnet_ids.selected.ids
   #kafka_security_groups = ["sg-00000000000000000"]
 
   server_properties = <<PROPERTIES
