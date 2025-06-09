@@ -31,7 +31,7 @@ module "cluster" {
 
   kafka_cluster_name           = "your-msk-name"
   kafka_version                = var.kafka_version
-  kafka_number_of_broker_nodes = 2
+  kafka_number_of_broker_nodes = 3
   kafka_instance_type          = "kafka.m7g.large"
   kafka_ebs_volume_size        = 100
   kafka_scaling_max_capacity   = 200
@@ -62,4 +62,8 @@ PROPERTIES
   ]
 
   source = "./modules/msk"
+}
+
+module "bastion" {
+  source = "./modules/bastion"
 }
