@@ -39,7 +39,6 @@ module "cluster" {
   kafka_client_subnets = data.aws_subnets.selected.ids
   #kafka_security_groups = ["sg-00000000000000000"]
 
-  # 2678400000 means 31 days
   server_properties = <<PROPERTIES
 auto.create.topics.enable=false
 default.replication.factor=3
@@ -49,7 +48,6 @@ num.network.threads=5
 num.partitions=3
 num.replica.fetchers=2
 replica.lag.time.max.ms=30000
-retention.ms=2678400000
 socket.receive.buffer.bytes=102400
 socket.request.max.bytes=104857600
 socket.send.buffer.bytes=102400
