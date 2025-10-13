@@ -61,13 +61,15 @@ PROPERTIES
   ]
 
  
-  source = "./modules/msk"
+  bastion_sg_id = module.bastion.bastion_sg_id
+  source        = "./modules/msk"
 }
 
 module "bastion" {
   bastion_server_name = "your-ec2-name"
   subnet_id           = data.aws_subnets.selected.ids[0]
+  vpc_id              = data.aws_vpc.selected.id
   kafka_version       = "3.6.0"
 
-  source        = "./modules/bastion"
+  source = "./modules/bastion"
 }

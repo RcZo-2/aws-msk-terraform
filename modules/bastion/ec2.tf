@@ -1,8 +1,9 @@
 resource "aws_instance" "msk_bastion_server" {
   ami                  = "ami-05ab12222a9f39021"
   instance_type        = "t2.micro"
-  subnet_id            = var.subnet_id
-  iam_instance_profile = "maybe-xxxx-runner"
+  subnet_id              = var.subnet_id
+  vpc_security_group_ids = [aws_security_group.bastion_sg.id]
+  iam_instance_profile   = "maybe-xxxx-runner"
 
   tags = {
     Name = var.bastion_server_name

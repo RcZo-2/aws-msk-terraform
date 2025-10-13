@@ -54,3 +54,8 @@ variable "vpc_id" {
   description = "The VPC ID where resources will be created."
   type        = string
 }
+
+variable "bastion_sg_id" {
+  description = "The security group ID of the bastion server."
+  type        = string
+}

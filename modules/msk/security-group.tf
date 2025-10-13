@@ -24,6 +24,13 @@ resource "aws_security_group" "msk_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    security_groups = [var.bastion_sg_id]
+  }
+
   egress {
     from_port = 0
     to_port   = 0
