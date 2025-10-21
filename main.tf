@@ -33,7 +33,7 @@ module "cluster" {
   kafka_cluster_name           = "your-msk-name"
   kafka_version                = "3.6.0"
   kafka_number_of_broker_nodes = 3
-  kafka_instance_type          = "kafka.m7g.large.express"
+  kafka_instance_type          = "express.m7g.large"
   kafka_ebs_volume_size        = 100
   kafka_scaling_max_capacity   = 200
   kafka_client_subnets = data.aws_subnets.selected.ids
