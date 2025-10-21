@@ -42,7 +42,7 @@ resource "aws_msk_cluster" "kafka" {
   #     }
   #   }
 
-  logging_info {
+  dynamic logging_info {
     broker_logs {
       cloudwatch_logs {
         enabled   = true
